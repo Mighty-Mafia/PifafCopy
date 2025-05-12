@@ -1,7 +1,14 @@
 local player = game.Players.LocalPlayer
 local userId = player.UserId
 
-if userId == 2682864672 then
+local whitelistedUsers = {
+    [2682864672] = true,
+    [1741283905] = true
+    -- Add more UserIds here
+}
+
+if whitelistedUsers[userId] then
+
     local isfile = isfile or function(file)
         local suc, res = pcall(function() return readfile(file) end)
         return suc and res ~= nil and res ~= ''
